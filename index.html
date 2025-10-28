@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard de Gestión de Riesgos</title>
+  <title>Dashboard - Proyecto Alimentación Saludable</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       background-color: #f5f7fa;
       color: #333;
     }
 
     header {
-      background: linear-gradient(135deg, #0077b6, #0096c7);
+      background: linear-gradient(135deg, #008000, #4CAF50);
       color: white;
       padding: 2rem;
       text-align: center;
@@ -21,7 +21,7 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 30px auto;
       background: white;
       border-radius: 12px;
@@ -30,10 +30,10 @@
     }
 
     h2 {
-      color: #023e8a;
-      margin-bottom: 1rem;
-      border-left: 6px solid #0096c7;
+      color: #2e7d32;
+      border-left: 6px solid #81c784;
       padding-left: 10px;
+      margin-top: 2rem;
     }
 
     table {
@@ -49,7 +49,7 @@
     }
 
     th {
-      background-color: #caf0f8;
+      background-color: #e8f5e9;
     }
 
     .chart-container {
@@ -59,123 +59,198 @@
 
     footer {
       text-align: center;
-      background: #023e8a;
+      background: #2e7d32;
       color: white;
       padding: 1rem;
-      border-top: 3px solid #0096c7;
+      border-top: 3px solid #81c784;
+      margin-top: 40px;
     }
 
     canvas {
       max-width: 700px;
+    }
+
+    .highlight {
+      background-color: #f1f8e9;
+      border-left: 5px solid #4caf50;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>📊 Dashboard de Gestión de Riesgos — Proyecto 2025</h1>
-    <p>Visualización general de los riesgos identificados y su estado actual</p>
+    <h1>🥦 Dashboard - Proyecto Alimentación Saludable</h1>
+    <p>Promoviendo hábitos alimenticios saludables en la comunidad educativa</p>
   </header>
 
   <div class="container">
-    <h2>Resumen de Riesgos</h2>
+    <h2>Resumen del Proyecto</h2>
+    <div class="highlight">
+      <p><strong>Nombre del Proyecto:</strong> Estrategias de Promoción de Alimentación Saludable en la Institución Educativa</p>
+      <p><strong>Objetivo:</strong> Fomentar hábitos alimentarios saludables entre estudiantes, docentes y comunidad educativa mediante campañas, talleres y mejora en la oferta alimentaria escolar.</p>
+      <p><strong>Duración:</strong> Marzo 2025 - Diciembre 2025</p>
+      <p><strong>Responsable Principal:</strong> Kenia López (Coordinadora del Proyecto)</p>
+    </div>
+
+    <h2>Indicadores de Seguimiento</h2>
     <table>
       <tr>
-        <th>ID</th>
-        <th>Riesgo</th>
-        <th>Impacto</th>
-        <th>Probabilidad</th>
-        <th>Plan de Respuesta</th>
-        <th>Responsable</th>
+        <th>Indicador</th>
+        <th>Meta</th>
+        <th>Valor Actual</th>
+        <th>Avance</th>
       </tr>
       <tr>
-        <td>R1</td>
-        <td>Retraso en entregas por sobrecarga de trabajo</td>
-        <td>Alto</td>
-        <td>Media</td>
-        <td>Planificar tareas y priorizar entregas críticas</td>
-        <td>Kenia López</td>
+        <td>Participación estudiantil en jornadas saludables</td>
+        <td>90%</td>
+        <td>75%</td>
+        <td>🟡 En progreso</td>
       </tr>
       <tr>
-        <td>R2</td>
-        <td>Fallas técnicas en el entorno de desarrollo</td>
-        <td>Medio</td>
-        <td>Alta</td>
-        <td>Crear backups y validar entornos antes de despliegue</td>
-        <td>Equipo de soporte</td>
+        <td>Capacitaciones realizadas a personal de tienda escolar</td>
+        <td>5</td>
+        <td>4</td>
+        <td>🟢 Casi cumplido</td>
       </tr>
       <tr>
-        <td>R3</td>
-        <td>Dependencia de terceros</td>
-        <td>Alto</td>
-        <td>Alta</td>
-        <td>Establecer acuerdos y seguimiento continuo</td>
-        <td>Líder de proyecto</td>
+        <td>Implementación de menús saludables</td>
+        <td>100%</td>
+        <td>80%</td>
+        <td>🟡 En proceso</td>
       </tr>
       <tr>
-        <td>R4</td>
-        <td>Errores en la base de datos</td>
-        <td>Medio</td>
-        <td>Media</td>
-        <td>Validar integridad de datos y pruebas previas</td>
-        <td>Desarrolladora backend</td>
-      </tr>
-      <tr>
-        <td>R5</td>
-        <td>Cambio de requerimientos</td>
-        <td>Alto</td>
-        <td>Baja</td>
-        <td>Documentar cambios y validar con cliente</td>
-        <td>Product Owner</td>
+        <td>Material educativo entregado</td>
+        <td>500 ejemplares</td>
+        <td>420 ejemplares</td>
+        <td>🟢 Avance estable</td>
       </tr>
     </table>
 
     <div class="chart-container">
-      <h2>Distribución de Impacto de Riesgos</h2>
-      <canvas id="impactChart"></canvas>
+      <h2>Gráfico de Avance General</h2>
+      <canvas id="avanceChart"></canvas>
     </div>
 
+    <h2>Cronograma de Actividades</h2>
+    <table>
+      <tr>
+        <th>Actividad</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Estado</th>
+      </tr>
+      <tr>
+        <td>Diagnóstico y planeación</td>
+        <td>Marzo 2025</td>
+        <td>Abril 2025</td>
+        <td>✅ Finalizado</td>
+      </tr>
+      <tr>
+        <td>Capacitación a docentes y personal de tienda</td>
+        <td>Mayo 2025</td>
+        <td>Junio 2025</td>
+        <td>🟡 En progreso</td>
+      </tr>
+      <tr>
+        <td>Campañas y jornadas saludables</td>
+        <td>Julio 2025</td>
+        <td>Septiembre 2025</td>
+        <td>🟢 En curso</td>
+      </tr>
+      <tr>
+        <td>Evaluación y cierre</td>
+        <td>Octubre 2025</td>
+        <td>Diciembre 2025</td>
+        <td>🔜 Pendiente</td>
+      </tr>
+    </table>
+
+    <h2>Gestión de Riesgos</h2>
+    <table>
+      <tr>
+        <th>No.</th>
+        <th>Descripción del Riesgo</th>
+        <th>Nivel</th>
+        <th>Tipo de Impacto</th>
+        <th>Plan de Mitigación</th>
+        <th>Responsable</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Falta de compromiso de algunos estudiantes</td>
+        <td>Media</td>
+        <td>Calidad / Alcance</td>
+        <td>Motivar con incentivos y actividades lúdicas</td>
+        <td>Docente líder de bienestar</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Retraso en materiales educativos</td>
+        <td>Media</td>
+        <td>Tiempo / Costo</td>
+        <td>Usar recursos digitales temporales</td>
+        <td>Coordinación Académica</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Bajo presupuesto para productos saludables</td>
+        <td>Alta</td>
+        <td>Costo / Alcance</td>
+        <td>Buscar donaciones o apoyo institucional</td>
+        <td>Área Administrativa</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Falta de apoyo del personal de tienda escolar</td>
+        <td>Alta</td>
+        <td>Alcance / Calidad</td>
+        <td>Capacitar y motivar desde el inicio del proyecto</td>
+        <td>Encargado de Tienda</td>
+      </tr>
+    </table>
+
     <div class="chart-container">
-      <h2>Probabilidad de Riesgos</h2>
-      <canvas id="probChart"></canvas>
+      <h2>Distribución de Niveles de Riesgo</h2>
+      <canvas id="riesgoChart"></canvas>
     </div>
   </div>
 
   <footer>
-    © 2025 - Gestión de Riesgos | Desarrollado por Kenia López 💻
+    © 2025 — Proyecto Alimentación Saludable | Desarrollado por Kenia López 🥗
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Gráfico de impacto
-    const ctx1 = document.getElementById('impactChart');
+    // Avance general
+    const ctx1 = document.getElementById('avanceChart');
     new Chart(ctx1, {
-      type: 'pie',
-      data: {
-        labels: ['Alto', 'Medio', 'Bajo'],
-        datasets: [{
-          data: [3, 2, 0],
-          backgroundColor: ['#ef476f', '#ffd166', '#06d6a0']
-        }]
-      }
-    });
-
-    // Gráfico de probabilidad
-    const ctx2 = document.getElementById('probChart');
-    new Chart(ctx2, {
       type: 'bar',
       data: {
-        labels: ['Alta', 'Media', 'Baja'],
+        labels: ['Participación', 'Capacitaciones', 'Menús saludables', 'Material educativo'],
         datasets: [{
-          label: 'Número de Riesgos',
-          data: [2, 2, 1],
-          backgroundColor: ['#118ab2', '#06d6a0', '#ffd166']
+          label: 'Avance (%)',
+          data: [75, 80, 80, 84],
+          backgroundColor: ['#81c784', '#aed581', '#66bb6a', '#4caf50']
         }]
       },
       options: {
-        scales: {
-          y: { beginAtZero: true }
-        }
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    // Riesgos
+    const ctx2 = document.getElementById('riesgoChart');
+    new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['Alta', 'Media', 'Baja'],
+        datasets: [{
+          data: [2, 2, 0],
+          backgroundColor: ['#ef5350', '#ffca28', '#81c784']
+        }]
       }
     });
   </script>
