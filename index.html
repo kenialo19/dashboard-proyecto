@@ -1,261 +1,305 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Proyecto Alimentación Saludable</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background-color: #f4f9f4;
-      color: #2e7d32;
+      background-color: #f0f4f8;
+      color: #333;
     }
 
     header {
-      background: linear-gradient(135deg, #43a047, #66bb6a);
+      background: linear-gradient(135deg, #2e7d32, #66bb6a);
       color: white;
-      padding: 2.5rem;
+      padding: 2rem;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    header h1 {
-      font-size: 2.3rem;
-      margin: 0;
-      animation: fadeInDown 1.2s ease;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      animation: fadeInUp 1.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .container {
-      max-width: 1300px;
+      max-width: 1200px;
       margin: 40px auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
       background: white;
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 25px;
-      transition: transform 0.3s;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .card:hover {
-      transform: scale(1.03);
+    h2 {
+      color: #2e7d32;
+      margin-top: 2rem;
+      border-left: 6px solid #66bb6a;
+      padding-left: 12px;
     }
 
-    .card h2 {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    th {
+      background: linear-gradient(135deg, #81c784, #a5d6a7);
+      color: #fff;
+      text-align: left;
+      padding: 12px;
+      cursor: pointer;
+      position: sticky;
+      top: 0;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:hover {
+      background-color: #f9fbe7;
+      transition: background-color 0.2s ease;
+    }
+
+    .status {
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 8px;
       text-align: center;
-      color: #388e3c;
-      margin-bottom: 1rem;
+      display: inline-block;
+      min-width: 100px;
     }
 
-    canvas {
-      width: 100% !important;
-      height: 300px !important;
+    .ok {
+      background-color: #c8e6c9;
+      color: #256029;
+    }
+
+    .progress {
+      background-color: #fff9c4;
+      color: #795548;
+    }
+
+    .pending {
+      background-color: #ffcdd2;
+      color: #b71c1c;
+    }
+
+    .chart-container {
+      margin: 3rem 0;
+      text-align: center;
     }
 
     footer {
       text-align: center;
       background: #2e7d32;
       color: white;
-      padding: 1.5rem;
-      font-size: 0.9rem;
+      padding: 1rem;
+      border-top: 4px solid #81c784;
       margin-top: 40px;
     }
 
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+    canvas {
+      max-width: 700px;
     }
 
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+    .highlight {
+      background-color: #f1f8e9;
+      border-left: 5px solid #4caf50;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+
+    /* Animación sutil al cargar */
+    table, canvas, .highlight {
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>🥦 Dashboard - Proyecto Alimentación Saludable</h1>
-    <p>Promoviendo hábitos saludables en la comunidad educativa</p>
+    <h1>🥗 Dashboard - Alimentación Saludable</h1>
+    <p>Seguimiento de metas, riesgos y actividades del proyecto 2025</p>
   </header>
 
   <div class="container">
-    <!-- Avance general -->
-    <div class="card">
-      <h2>Avance de Indicadores</h2>
+    <h2>Resumen del Proyecto</h2>
+    <div class="highlight">
+      <p><strong>Nombre del Proyecto:</strong> Estrategias para Promover la Alimentación Saludable</p>
+      <p><strong>Objetivo:</strong> Promover hábitos saludables mediante talleres, menús nutritivos y participación comunitaria.</p>
+      <p><strong>Duración:</strong> Marzo 2025 - Diciembre 2025</p>
+      <p><strong>Responsable:</strong> Kenia López</p>
+    </div>
+
+    <h2>Indicadores de Seguimiento</h2>
+    <table id="indicadoresTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0, 'indicadoresTable')">Indicador</th>
+          <th onclick="sortTable(1, 'indicadoresTable')">Meta</th>
+          <th onclick="sortTable(2, 'indicadoresTable')">Avance (%)</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Participación estudiantil</td>
+          <td>90%</td>
+          <td>75%</td>
+          <td><span class="status progress">En progreso</span></td>
+        </tr>
+        <tr>
+          <td>Capacitaciones al personal</td>
+          <td>5</td>
+          <td>80%</td>
+          <td><span class="status ok">Casi cumplido</span></td>
+        </tr>
+        <tr>
+          <td>Implementación de menús saludables</td>
+          <td>100%</td>
+          <td>70%</td>
+          <td><span class="status progress">En proceso</span></td>
+        </tr>
+        <tr>
+          <td>Material educativo distribuido</td>
+          <td>500</td>
+          <td>420</td>
+          <td><span class="status ok">Avance estable</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="chart-container">
+      <h2>📊 Avance General del Proyecto</h2>
       <canvas id="avanceChart"></canvas>
     </div>
 
-    <!-- Cronograma -->
-    <div class="card">
-      <h2>Cronograma de Actividades</h2>
-      <canvas id="cronogramaChart"></canvas>
-    </div>
+    <h2>Gestión de Riesgos</h2>
+    <table id="riesgosTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0, 'riesgosTable')">No.</th>
+          <th onclick="sortTable(1, 'riesgosTable')">Descripción</th>
+          <th onclick="sortTable(2, 'riesgosTable')">Nivel</th>
+          <th>Impacto</th>
+          <th>Plan de Mitigación</th>
+          <th>Responsable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Falta de compromiso estudiantil</td>
+          <td><span class="status progress">Media</span></td>
+          <td>Calidad / Alcance</td>
+          <td>Incentivos y actividades lúdicas</td>
+          <td>Docente de Bienestar</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Retraso en materiales educativos</td>
+          <td><span class="status progress">Media</span></td>
+          <td>Tiempo / Costo</td>
+          <td>Usar recursos digitales alternos</td>
+          <td>Coordinación Académica</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Bajo presupuesto para alimentos saludables</td>
+          <td><span class="status pending">Alta</span></td>
+          <td>Costo / Alcance</td>
+          <td>Buscar apoyo o donaciones</td>
+          <td>Área Administrativa</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <!-- Riesgos -->
-    <div class="card">
-      <h2>Gestión de Riesgos</h2>
-      <canvas id="riesgosChart"></canvas>
-    </div>
-
-    <!-- Participación -->
-    <div class="card">
-      <h2>Participación Estudiantil</h2>
-      <canvas id="participacionChart"></canvas>
-    </div>
-
-    <!-- Recursos Educativos -->
-    <div class="card">
-      <h2>Distribución de Material Educativo</h2>
-      <canvas id="materialChart"></canvas>
+    <div class="chart-container">
+      <h2>🍏 Distribución de Niveles de Riesgo</h2>
+      <canvas id="riesgoChart"></canvas>
     </div>
   </div>
 
   <footer>
-    © 2025 — Proyecto Alimentación Saludable | Desarrollado por Kenia López 🥗
+    © 2025 — Proyecto Alimentación Saludable | Desarrollado por Kenia López 🌿
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    Chart.register(ChartDataLabels);
+    // Función para ordenar tablas
+    function sortTable(n, tableId) {
+      const table = document.getElementById(tableId);
+      let switching = true, dir = "asc", switchcount = 0;
+      while (switching) {
+        switching = false;
+        const rows = table.rows;
+        for (let i = 1; i < rows.length - 1; i++) {
+          let shouldSwitch = false;
+          const x = rows[i].getElementsByTagName("TD")[n];
+          const y = rows[i + 1].getElementsByTagName("TD")[n];
+          if ((dir === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) ||
+              (dir === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase())) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount++;
+        } else if (switchcount === 0 && dir === "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
 
-    // 1️⃣ Avance General
+    // Chart de avance
     new Chart(document.getElementById("avanceChart"), {
       type: "bar",
       data: {
         labels: ["Participación", "Capacitaciones", "Menús saludables", "Material educativo"],
         datasets: [{
           label: "Avance (%)",
-          data: [75, 80, 80, 84],
-          backgroundColor: ["#81c784", "#aed581", "#66bb6a", "#4caf50"],
+          data: [75, 80, 70, 84],
+          backgroundColor: ["#66bb6a", "#81c784", "#aed581", "#9ccc65"],
           borderRadius: 8
         }]
       },
       options: {
-        plugins: {
-          datalabels: {
-            color: '#1b5e20',
-            anchor: 'end',
-            align: 'top',
-            formatter: (val) => val + '%'
-          },
-          legend: { display: false },
-          title: { display: true, text: "Avance por Indicador", color: "#2e7d32" }
-        },
-        scales: {
-          y: { beginAtZero: true, max: 100 }
-        },
-        animation: {
-          duration: 1800,
-          easing: 'easeOutBounce'
-        }
-      }
-    });
-
-    // 2️⃣ Cronograma
-    new Chart(document.getElementById("cronogramaChart"), {
-      type: "line",
-      data: {
-        labels: ["Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-        datasets: [{
-          label: "Progreso del Proyecto (%)",
-          data: [10, 25, 45, 60, 70, 80, 85, 90, 95, 100],
-          borderColor: "#4caf50",
-          backgroundColor: "rgba(76, 175, 80, 0.2)",
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        plugins: {
-          datalabels: { display: false },
-          legend: { display: false },
-          title: { display: true, text: "Evolución del Cronograma", color: "#2e7d32" }
-        },
+        responsive: true,
         scales: { y: { beginAtZero: true, max: 100 } },
-        animation: { duration: 1500, easing: 'easeInOutQuart' }
+        plugins: { legend: { display: false } }
       }
     });
 
-    // 3️⃣ Riesgos
-    new Chart(document.getElementById("riesgosChart"), {
+    // Chart de riesgos
+    new Chart(document.getElementById("riesgoChart"), {
       type: "doughnut",
       data: {
         labels: ["Alta", "Media", "Baja"],
         datasets: [{
-          data: [2, 2, 0],
-          backgroundColor: ["#e57373", "#ffeb3b", "#81c784"],
-          hoverOffset: 15
+          data: [1, 2, 0],
+          backgroundColor: ["#ef5350", "#ffca28", "#81c784"],
+          hoverOffset: 8
         }]
       },
       options: {
         plugins: {
-          datalabels: {
-            color: '#2e7d32',
-            formatter: (val, ctx) => ctx.chart.data.labels[ctx.dataIndex]
-          },
-          title: { display: true, text: "Distribución de Niveles de Riesgo", color: "#2e7d32" }
-        },
-        animation: { animateScale: true, duration: 1800 }
-      }
-    });
-
-    // 4️⃣ Participación Estudiantil
-    new Chart(document.getElementById("participacionChart"), {
-      type: "radar",
-      data: {
-        labels: ["Talleres", "Charlas", "Jornadas deportivas", "Campañas", "Ferias"],
-        datasets: [{
-          label: "Participación (%)",
-          data: [80, 75, 90, 70, 85],
-          backgroundColor: "rgba(76,175,80,0.2)",
-          borderColor: "#388e3c",
-          pointBackgroundColor: "#66bb6a"
-        }]
-      },
-      options: {
-        plugins: {
-          datalabels: { display: false },
-          title: { display: true, text: "Nivel de Participación Estudiantil", color: "#2e7d32" }
-        },
-        animation: { duration: 1600, easing: 'easeOutElastic' }
-      }
-    });
-
-    // 5️⃣ Material Educativo
-    new Chart(document.getElementById("materialChart"), {
-      type: "polarArea",
-      data: {
-        labels: ["Guías", "Afiches", "Videos", "Recetarios", "Talleres prácticos"],
-        datasets: [{
-          label: "Cantidad Entregada",
-          data: [120, 80, 70, 100, 50],
-          backgroundColor: ["#a5d6a7", "#c8e6c9", "#81c784", "#66bb6a", "#4caf50"]
-        }]
-      },
-      options: {
-        plugins: {
-          datalabels: {
-            color: '#2e7d32',
-            formatter: (val) => val
-          },
-          title: { display: true, text: "Distribución de Material Educativo", color: "#2e7d32" }
-        },
-        animation: { duration: 2000, easing: 'easeInOutSine' }
+          legend: { position: "bottom" }
+        }
       }
     });
   </script>
