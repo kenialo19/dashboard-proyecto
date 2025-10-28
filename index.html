@@ -13,20 +13,25 @@
     }
 
     header {
-      background: linear-gradient(135deg, #008000, #4CAF50);
+      background: linear-gradient(135deg, #43a047, #81c784);
       color: white;
       padding: 2rem;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: .3rem;
     }
 
     .container {
-      max-width: 1200px;
-      margin: 30px auto;
+      max-width: 1100px;
+      margin: 40px auto;
       background: white;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     h2 {
@@ -34,6 +39,9 @@
       border-left: 6px solid #81c784;
       padding-left: 10px;
       margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     table {
@@ -50,11 +58,21 @@
 
     th {
       background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    tr:hover {
+      background-color: #f9fbe7;
     }
 
     .chart-container {
-      margin: 2rem 0;
+      margin: 3rem 0;
       text-align: center;
+    }
+
+    canvas {
+      max-width: 400px;
+      margin: auto;
     }
 
     footer {
@@ -64,18 +82,39 @@
       padding: 1rem;
       border-top: 3px solid #81c784;
       margin-top: 40px;
-    }
-
-    canvas {
-      max-width: 700px;
+      font-size: 0.9rem;
     }
 
     .highlight {
       background-color: #f1f8e9;
-      border-left: 5px solid #4caf50;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
+      border-left: 6px solid #4caf50;
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+    }
+
+    /* Barras de progreso */
+    .progress-bar {
+      height: 20px;
+      border-radius: 10px;
+      background-color: #eee;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    .progress {
+      height: 100%;
+      border-radius: 10px;
+      background-color: #81c784;
+      text-align: right;
+      padding-right: 5px;
+      color: white;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .icon {
+      font-size: 22px;
     }
   </style>
 </head>
@@ -83,11 +122,11 @@
 
   <header>
     <h1>🥦 Dashboard - Proyecto Alimentación Saludable</h1>
-    <p>Promoviendo hábitos alimenticios saludables en la comunidad educativa</p>
+    <p>Promoviendo hábitos alimenticios saludables en la comunidad educativa 🍎</p>
   </header>
 
   <div class="container">
-    <h2>Resumen del Proyecto</h2>
+    <h2>📘 Resumen del Proyecto</h2>
     <div class="highlight">
       <p><strong>Nombre del Proyecto:</strong> Estrategias de Promoción de Alimentación Saludable en la Institución Educativa</p>
       <p><strong>Objetivo:</strong> Fomentar hábitos alimentarios saludables entre estudiantes, docentes y comunidad educativa mediante campañas, talleres y mejora en la oferta alimentaria escolar.</p>
@@ -95,7 +134,7 @@
       <p><strong>Responsable Principal:</strong> Kenia López (Coordinadora del Proyecto)</p>
     </div>
 
-    <h2>Indicadores de Seguimiento</h2>
+    <h2>📊 Indicadores de Seguimiento</h2>
     <table>
       <tr>
         <th>Indicador</th>
@@ -107,34 +146,42 @@
         <td>Participación estudiantil en jornadas saludables</td>
         <td>90%</td>
         <td>75%</td>
-        <td>🟡 En progreso</td>
+        <td>
+          <div class="progress-bar"><div class="progress" style="width:75%">75%</div></div>
+        </td>
       </tr>
       <tr>
         <td>Capacitaciones realizadas a personal de tienda escolar</td>
         <td>5</td>
         <td>4</td>
-        <td>🟢 Casi cumplido</td>
+        <td>
+          <div class="progress-bar"><div class="progress" style="width:80%">80%</div></div>
+        </td>
       </tr>
       <tr>
         <td>Implementación de menús saludables</td>
         <td>100%</td>
         <td>80%</td>
-        <td>🟡 En proceso</td>
+        <td>
+          <div class="progress-bar"><div class="progress" style="width:80%">80%</div></div>
+        </td>
       </tr>
       <tr>
         <td>Material educativo entregado</td>
         <td>500 ejemplares</td>
         <td>420 ejemplares</td>
-        <td>🟢 Avance estable</td>
+        <td>
+          <div class="progress-bar"><div class="progress" style="width:84%">84%</div></div>
+        </td>
       </tr>
     </table>
 
     <div class="chart-container">
-      <h2>Gráfico de Avance General</h2>
+      <h2>📈 Gráfico de Avance General</h2>
       <canvas id="avanceChart"></canvas>
     </div>
 
-    <h2>Cronograma de Actividades</h2>
+    <h2>🗓️ Cronograma de Actividades</h2>
     <table>
       <tr>
         <th>Actividad</th>
@@ -168,7 +215,7 @@
       </tr>
     </table>
 
-    <h2>Gestión de Riesgos</h2>
+    <h2>⚠️ Gestión de Riesgos</h2>
     <table>
       <tr>
         <th>No.</th>
@@ -213,7 +260,7 @@
     </table>
 
     <div class="chart-container">
-      <h2>Distribución de Niveles de Riesgo</h2>
+      <h2>🥕 Distribución de Niveles de Riesgo</h2>
       <canvas id="riesgoChart"></canvas>
     </div>
   </div>
@@ -237,6 +284,9 @@
         }]
       },
       options: {
+        plugins: {
+          legend: { display: false },
+        },
         scales: { y: { beginAtZero: true, max: 100 } }
       }
     });
@@ -251,6 +301,17 @@
           data: [2, 2, 0],
           backgroundColor: ['#ef5350', '#ffca28', '#81c784']
         }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: { size: 14 },
+              color: '#333'
+            }
+          }
+        }
       }
     });
   </script>
