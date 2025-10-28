@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Gestión de Riesgos</title>
+
+  <!-- Librerías -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f5f6fa;
+      color: #333;
+    }
+
+    header {
+      background: #0056b3;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e9efff;
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>📊 Dashboard de Gestión de Riesgos del Proyecto</header>
+
+  <div class="container">
+    <!-- Gráfico de Probabilidad -->
+    <div class="card">
+      <h2>Distribución de Probabilidades</h2>
+      <canvas id="chartProbabilidad"></canvas>
+    </div>
+
+    <!-- Gráfico de Impactos -->
+    <div class="card">
+      <h2>Impacto de los Riesgos</h2>
+      <canvas id="chartImpacto"></canvas>
+    </div>
+
+    <!-- Tabla de Riesgos -->
+    <div class="card">
+      <h2>Lista de Riesgos Identificados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Riesgo</th>
+            <th>Probabilidad</th>
+            <th>Impacto</th>
+            <th>Plan de Respuesta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Retrasos en entregas</td>
+            <td>Alta</td>
+            <td>Alto</td>
+            <td>Revisar cronograma y reforzar seguimiento</td>
+          </tr>
+          <tr>
+            <td>Errores en código</td>
+            <td>Media</td>
+            <td>Medio</td>
+            <td>Implementar pruebas unitarias y revisiones de código</td>
+          </tr>
+          <tr>
+            <td>Dependencias externas</td>
+            <td>Alta</td>
+            <td>Alto</td>
+            <td>Plan B de proveedores y tareas internas</td>
+          </tr>
+          <tr>
+            <td>Falta de comunicación</td>
+            <td>Media</td>
+            <td>Alto</td>
+            <td>Reuniones semanales y uso de canales oficiales</td>
+          </tr>
+          <tr>
+            <td>Cambio de requerimientos</td>
+            <td>Baja</td>
+            <td>Medio</td>
+            <td>Control de cambios y documentación continua</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Datos para los gráficos
+    const probabilidadData = {
+      labels: ["Alta", "Media", "Baja"],
+      datasets: [{
+        label: "Cantidad de Riesgos",
+        data: [2, 2, 1],
+        backgroundColor: ["#ff4d4d", "#ffb84d", "#4d79ff"],
+      }]
+    };
+
+    const impactoData = {
+      labels: ["Alto", "Medio", "Bajo"],
+      datasets: [{
+        label: "Impacto de Riesgos",
+        data: [3, 2, 0],
+        backgroundColor: ["#e74c3c", "#f1c40f", "#2ecc71"],
+      }]
+    };
+
+    new Chart(document.getElementById("chartProbabilidad"), {
+      type: "pie",
+      data: probabilidadData,
+    });
+
+    new Chart(document.getElementById("chartImpacto"), {
+      type: "bar",
+      data: impactoData,
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
